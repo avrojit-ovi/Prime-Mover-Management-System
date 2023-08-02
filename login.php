@@ -1,3 +1,62 @@
+<?php
+// Include the database connection file
+require_once 'includes/db.php';
+
+// Initialize variables to store user input
+$email = $password = '';
+$login_error = '';
+
+// Check if the form is submitted
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Check if email is set in the $_POST array
+    if (isset($_POST['email'])) {
+        // Get user input from the form
+        $email = $_POST['email'];
+    }
+    // Get password from the form
+    $password = $_POST['password'];
+
+    // Validate user input (You can add more validation if needed)
+    if (empty($email) || empty($password)) {
+        $login_error = 'Please enter both email and password';
+    } else {
+        // Check if the email exists in the database
+        $sql = "SELECT id, password FROM users WHERE email = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('s', $email);
+        $stmt->execute();
+        $stmt->store_result();
+
+        if ($stmt->num_rows > 0) {
+            $stmt->bind_result($user_id, $hashed_password);
+            $stmt->fetch();
+
+            // Verify the password
+            if (password_verify($password, $hashed_password)) {
+                // Login successful
+                // You can start a session here or redirect the user to the dashboard page
+                // For example, you can start a session like this:
+                session_start();
+                $_SESSION['user_id'] = $user_id;
+                // Redirect to dashboard page
+                header("Location: dashboard.php");
+                exit(); // Important: Make sure to exit after redirection to avoid further execution of the script
+            } else {
+                // Incorrect password
+                $login_error = 'Invalid email or password';
+            }
+        } else {
+            // User not found
+            $login_error = 'User not found';
+        }
+
+        // Close the prepared statement
+        $stmt->close();
+    }
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en" class="light-style customizer-hide" dir="ltr" data-theme="theme-default" data-assets-path="../assets/" data-template="vertical-menu-template-free">
 <head>
@@ -35,50 +94,12 @@
                         <h4 class="mb-2">Welcome to Sneat! 👋</h4>
                         <p class="mb-4">Please sign-in to your account and start the adventure</p>
 
-                        <?php
-                        require_once 'includes/db.php';
-
-                        // Check if the form is submitted
-                        if (isset($_POST['email-username']) && isset($_POST['password'])) {
-                            $emailOrUsername = $_POST['email-username'];
-                            $password = $_POST['password'];
-
-                            // Escape user inputs to prevent SQL injection
-                            $emailOrUsername = mysqli_real_escape_string($conn, $emailOrUsername);
-
-                            // Query to check if the email or username match a record in the database
-                            $query = "SELECT * FROM users WHERE (email = '$emailOrUsername' OR username = '$emailOrUsername')";
-                            $result = mysqli_query($conn, $query);
-
-                            // Check if any rows are returned
-                            if (mysqli_num_rows($result) > 0) {
-                                // User found, now verify the password
-                                $row = mysqli_fetch_assoc($result);
-                                $hashedPasswordFromDB = $row['password'];
-
-                                // Verify the password using password_verify()
-                                if (password_verify($password, $hashedPasswordFromDB)) {
-                                    // Password matches, login successful, redirect to dashboard
-                                    header('Location: dashboard.php');
-                                    exit();
-                                } else {
-                                    // Password does not match, show an error message
-                                    $errorMsg = "Invalid email/username or password. Please try again.";
-                                }
-                            } else {
-                                // No matching user found, show an error message
-                                $errorMsg = "Invalid email/username or password. Please try again.";
-                            }
-                        }
-
-                        // Close database connection
-                        mysqli_close($conn);
-                        ?>
+                        
 
                         <form id="formAuthentication" class="mb-3" action="login.php" method="POST">
                             <div class="mb-3">
-                                <label for="email" class="form-label">Email or Username</label>
-                                <input type="text" class="form-control" id="email" name="email-username" placeholder="Enter your email or username" autofocus />
+                                <label for="email" class="form-label">Email </label>
+                                <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email" autofocus />
                             </div>
                             <div class="mb-3 form-password-toggle">
                                 <div class="d-flex justify-content-between">
@@ -102,9 +123,9 @@
                                 <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
                             </div>
 
-                            <?php if (isset($errorMsg)): ?>
+                            <?php if (isset($login_error) && !empty($login_error)): ?>
                                 <div class="alert alert-danger" role="alert">
-                                    <?php echo $errorMsg; ?>
+                                    <?php echo $login_error; ?>
                                 </div>
                             <?php endif; ?>
 
@@ -124,7 +145,10 @@
     </div>
 
     <!-- / Content -->
-
+    <?php
+// Close the database connection
+$conn->close();
+?>
 
 
     <script src="includes/js.php"></script>
