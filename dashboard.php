@@ -1,27 +1,4 @@
-<?php
-// Start the session (assuming the user is already logged in and you've stored the user's name in the session)
-session_start();
-
-if (isset($_SESSION['user_id'])) {
-    $user_id = $_SESSION['user_id'];
-} else {
-    // Redirect to the login page if the user is not logged in
-    header("Location: login.php");
-    exit();
-}
-
-// Include the database connection file
-require_once 'includes/db.php';
-
-// Fetch the full name of the user using the user_id from the session
-$sql = "SELECT name, profile_picture FROM users WHERE id = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param('s', $user_id);
-$stmt->execute();
-$stmt->bind_result($name, $profile_pic);
-$stmt->fetch();
-$stmt->close();
-?>
+<?php require_once "session.php" ?>
 
 
 
@@ -171,6 +148,36 @@ $stmt->close();
                         <div class="card-body">
                           <div class="card-title d-flex align-items-start justify-content-between">
                             <div class="avatar flex-shrink-0">
+                              <img src="assets/img/icons/unicons/paypal.png" alt="Credit Card" class="rounded" />
+                            </div>
+                            <div class="dropdown">
+                              <button
+                                class="btn p-0"
+                                type="button"
+                                id="cardOpt4"
+                                data-bs-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                              >
+                                <i class="bx bx-dots-vertical-rounded"></i>
+                              </button>
+                              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt4">
+                                <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                                <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                              </div>
+                            </div>
+                          </div>
+                          <span class="d-block mb-1">Payments</span>
+                          <h3 class="card-title text-nowrap mb-2">$2,456</h3>
+                          <small class="text-danger fw-semibold"><i class="bx bx-down-arrow-alt"></i> -14.82%</small>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-6 mb-4">
+                      <div class="card">
+                        <div class="card-body">
+                          <div class="card-title d-flex align-items-start justify-content-between">
+                            <div class="avatar flex-shrink-0">
                               <img src="assets/img/icons/unicons/cc-primary.png" alt="Credit Card" class="rounded" />
                             </div>
                             <div class="dropdown">
@@ -217,6 +224,7 @@ $stmt->close();
                         </div>
                       </div>
                     </div>
+                    
                     <!-- </div>
     <div class="row"> -->
                    

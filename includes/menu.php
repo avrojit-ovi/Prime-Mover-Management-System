@@ -18,8 +18,8 @@
 
     <ul class="menu-inner py-1">
         <!-- Dashboard -->
-        <li class="menu-item active">
-            <a href="index.html" class="menu-link">
+        <li class="menu-item <?php echo (basename($_SERVER['PHP_SELF']) === 'dashboard.php') ? 'active' : ''; ?>">
+            <a href="dashboard.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
             </a>
@@ -28,12 +28,26 @@
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Pages</span>
         </li>
-        <li class="menu-item ">
-            <a href="index.html" class="menu-link">
+        <li class="menu-item <?php echo (basename($_SERVER['PHP_SELF']) === 'vehicles.php') ? 'active' : ''; ?>">
+            <a href="vehicles.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Dashboard</div>
+                <div data-i18n="Analytics">Vehicles</div>
+            </a>
+        </li>
+        <!-- User -->
+        <li class="menu-item <?php echo (basename($_SERVER['PHP_SELF']) === 'employee.php') ? 'active' : ''; ?>">
+            <a href="employee.php" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics">Employee</div>
+            </a>
+        </li>
+        <li class="menu-item <?php echo (basename($_SERVER['PHP_SELF']) === 'user.php') ? 'active' : ''; ?>">
+            <a href="user.php" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics">User</div>
             </a>
         </li>
     </ul>
 </aside>
+
 <!-- / Menu -->
