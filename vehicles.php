@@ -197,8 +197,8 @@ if (isset($_GET['delete_vehicle_id'])) {
                                 <div class="card">
                                     <h5 class="card-header">All vehicles</h5>
                                     <div class="card-body">
-                                        <div class="table-responsive text-nowrap">
-                                            <table class="table table-bordered" id="vehiclesTable">
+                                        <div class="table-responsive text-nowrap ">
+                                            <table class="table table-bordered table-hover text-center" id="vehiclesTable">
                                                 <thead>
                                                     <tr>
                                                         <th>ID</th>
@@ -222,7 +222,7 @@ if (isset($_GET['delete_vehicle_id'])) {
                                                         <td>
                                                         <button
                                                             type="button"
-                                                            class="btn btn-sm btn-info"
+                                                            class="btn btn-sm btn-info invisible"
                                                             data-bs-toggle="modal"
                                                             data-bs-target="#vehiclesEditModal"
                                                             onclick="openEditModal(<?php echo $row['vehicle_id']; ?>, '<?php echo $row['vehicle_number']; ?>')">
