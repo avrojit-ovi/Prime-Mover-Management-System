@@ -377,7 +377,7 @@ while ($row = mysqli_fetch_assoc($result)) : ?>
         <!-- JavaScript code for fetching and displaying data -->
         <script>
 
-            // Additional code to specifically initialize the HTML5 date input
+            // Additional code to specifically initialize the HTML5 date 
             $(document).ready(function () {
                 $('input[data-date-type="html5-date-input"]').attr('type', 'date');
             });
