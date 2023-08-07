@@ -30,14 +30,14 @@
         </li>
         <li class="menu-item <?php echo (basename($_SERVER['PHP_SELF']) === 'vehicles.php') ? 'active' : ''; ?>">
             <a href="vehicles.php" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+            <i class="menu-icon tf-icons fa-solid fa-truck-fast"></i>
                 <div data-i18n="Analytics">Vehicles</div>
             </a>
         </li>
         <!-- User -->
         <li class="menu-item <?php echo (basename($_SERVER['PHP_SELF']) === 'employee.php') ? 'active' : ''; ?>">
             <a href="employee.php" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+            <i class="menu-icon tf-icons fa-solid fa-person-military-to-person"></i>
                 <div data-i18n="Analytics">Employee</div>
             </a>
         </li>
