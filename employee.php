@@ -46,36 +46,60 @@ if (!$conn) {
                     <div class="content-wrapper">
                         <!-- Content -->
 
-                        <div class="container-xxl container-p-y">
+                        
+              <!-- 3 div card code start here  -->
+              <div class="container-xxl flex-grow-1 container-p-y">
+              <div class="row mb-3">
+    <div class="col-md-4">
+        <div class="card bg-info text-white">
+            <div class="card-body">
+                <h5 class="card-title">Total Drivers</h5>
+                <p class="card-text">
+                    <?php
+                    $queryTotalDrivers = "SELECT COUNT(*) AS total_drivers FROM employees WHERE role = 'Driver'";
+                    $resultTotalDrivers = mysqli_query($conn, $queryTotalDrivers);
+                    $rowTotalDrivers = mysqli_fetch_assoc($resultTotalDrivers);
+                    echo $rowTotalDrivers['total_drivers'];
+                    ?>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card bg-success text-white">
+            <div class="card-body">
+                <h5 class="card-title">Total Helpers</h5>
+                <p class="card-text">
+                    <?php
+                    $queryTotalHelpers = "SELECT COUNT(*) AS total_helpers FROM employees WHERE role = 'Helper'";
+                    $resultTotalHelpers = mysqli_query($conn, $queryTotalHelpers);
+                    $rowTotalHelpers = mysqli_fetch_assoc($resultTotalHelpers);
+                    echo $rowTotalHelpers['total_helpers'];
+                    ?>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card bg-warning text-white">
+            <div class="card-body">
+                <h5 class="card-title">Total Salary</h5>
+                <p class="card-text"> <i class="fa-solid fa-bangladeshi-taka-sign"></i>
+    <?php
+    $queryTotalSalary = "SELECT SUM(salary) AS total_salary FROM employees";
+    $resultTotalSalary = mysqli_query($conn, $queryTotalSalary);
+    $rowTotalSalary = mysqli_fetch_assoc($resultTotalSalary);
+    echo number_format($rowTotalSalary['total_salary'], 2); // Add number_format function
+    ?>
+</p>
+            </div>
+        </div>
+    </div>
+</div>
+              </div>
 
-                            <!-- add employee button here -->
+              <!-- 3 div card code end here  -->
 
-                            <!-- Button trigger modal -->
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <button
-                                        type="button"
-                                        class="btn rounded-pill btn-outline-primary"
-                                        data-bs-toggle="modal"
-                                        data-bs-target="#employeeAddModal">
-                                        <i class="fa-solid fa-person-military-to-person"></i>
-                                        Add Employee</button>
-                                </div>
-                                <div class="col-md-3"></div>
-                                <div class="col-md-3"></div>
-                                <div class="col-md-3">
-                                    <form class="d-flex">
-                                        <input
-                                            class="form-control me-2"
-                                            type="search"
-                                            id="table_search"
-                                            placeholder="Search by name, phone, role, salary, NID, date, vehicle..."
-                                            aria-label="Search">
-                                        <button class="btn btn-outline-primary" type="button" onclick="searchTable()">Search</button>
-
-                                    </form>
-                                </div>
-                            </div>
 
                             <!-- Vertically Centered Modal -->
 
@@ -284,18 +308,47 @@ if (!$conn) {
                                 </div>
                             </div>
 
-                        </div>
+                       
                         <!-- / Content -->
                         <div class="container-xxl flex-grow-1 container-p-y">
                             <!-- Table codes start here -->
-                            <hr class="my-5"/>
+                            
+                                                        <!-- add employee button here -->
+
+                            <!-- Button trigger modal -->
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <button
+                                        type="button"
+                                        class="btn rounded-pill btn-outline-primary"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#employeeAddModal">
+                                        <i class="fa-solid fa-person-military-to-person"></i>
+                                        Add Employee</button>
+                                </div>
+                                <div class="col-md-3"></div>
+                                <div class="col-md-3"></div>
+                                <div class="col-md-3">
+                                    <form class="d-flex">
+                                        <input
+                                            class="form-control me-2"
+                                            type="search"
+                                            id="table_search"
+                                            placeholder="Search by name, phone, role, salary, NID, date, vehicle..."
+                                            aria-label="Search">
+                                        <button class="btn btn-outline-primary" type="button" onclick="searchTable()">Search</button>
+
+                                    </form>
+                                </div>
+                            </div>
                             <!-- Hoverable Table rows -->
                             <div class="card">
+                                
                                 <h5 class="card-header">All Employees</h5>
                                 <div class="card-body">
                                     <div class="table-responsive text-nowrap ">
                                         <table
-                                            class="table table-bordered text-nowrap table-hover text-center"
+                                            class="table table-bordered text-nowrap table-hover table-striped text-center"
                                             id="vehiclesTable">
                                             <thead>
                                                 <tr>
