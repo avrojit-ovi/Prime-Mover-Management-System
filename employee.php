@@ -46,146 +46,145 @@ if (!$conn) {
                     <div class="content-wrapper">
                         <!-- Content -->
 
-                        
-              <!-- 3 div card code start here  -->
-              <div class="container-xxl flex-grow-1 container-p-y">
-              <div class="row mb-3">
-    <div class="col-md-4">
-        <div class="card bg-info text-white">
-            <div class="card-body">
-                <h5 class="card-title">Total Drivers</h5>
-                <p class="card-text">
-                    <?php
+                        <!-- 3 div card code start here -->
+                        <div class="container-xxl flex-grow-1 container-p-y">
+                            <div class="row mb-3">
+                                <div class="col-md-4">
+                                    <div class="card bg-info text-white">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Total Drivers</h5>
+                                            <p class="card-text">
+                                                <?php
                     $queryTotalDrivers = "SELECT COUNT(*) AS total_drivers FROM employees WHERE role = 'Driver'";
                     $resultTotalDrivers = mysqli_query($conn, $queryTotalDrivers);
                     $rowTotalDrivers = mysqli_fetch_assoc($resultTotalDrivers);
                     echo $rowTotalDrivers['total_drivers'];
                     ?>
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card bg-success text-white">
-            <div class="card-body">
-                <h5 class="card-title">Total Helpers</h5>
-                <p class="card-text">
-                    <?php
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card bg-success text-white">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Total Helpers</h5>
+                                            <p class="card-text">
+                                                <?php
                     $queryTotalHelpers = "SELECT COUNT(*) AS total_helpers FROM employees WHERE role = 'Helper'";
                     $resultTotalHelpers = mysqli_query($conn, $queryTotalHelpers);
                     $rowTotalHelpers = mysqli_fetch_assoc($resultTotalHelpers);
                     echo $rowTotalHelpers['total_helpers'];
                     ?>
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card bg-warning text-white">
-            <div class="card-body">
-                <h5 class="card-title">Total Salary</h5>
-                <p class="card-text"> <i class="fa-solid fa-bangladeshi-taka-sign"></i>
-                    <?php
-                    $queryTotalSalary = "SELECT SUM(salary) AS total_salary FROM employees";
-                    $resultTotalSalary = mysqli_query($conn, $queryTotalSalary);
-                    $rowTotalSalary = mysqli_fetch_assoc($resultTotalSalary);
-                    echo $rowTotalSalary['total_salary'];
-                    ?>
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
-              </div>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card bg-warning text-white">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Total Salary</h5>
+                                            <p class="card-text">
+                                                <i class="fa-solid fa-bangladeshi-taka-sign"></i>
+                                                <?php
+    $queryTotalSalary = "SELECT SUM(salary) AS total_salary FROM employees";
+    $resultTotalSalary = mysqli_query($conn, $queryTotalSalary);
+    $rowTotalSalary = mysqli_fetch_assoc($resultTotalSalary);
+    echo number_format($rowTotalSalary['total_salary'], 2); // Add number_format function
+    ?>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-              <!-- 3 div card code end here  -->
+                        <!-- 3 div card code end here -->
 
+                        <!-- Vertically Centered Modal -->
 
-                            <!-- Vertically Centered Modal -->
-
-                            <!-- add Modal -->
-                            <div class="modal fade" id="employeeAddModal" tabindex="-1" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <form action="includes/addemployee.php" method="post">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="employeeAddModalTitle">Add Employees</h5>
-                                                <button
-                                                    type="button"
-                                                    class="btn-close"
-                                                    data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
+                        <!-- add Modal -->
+                        <div class="modal fade" id="employeeAddModal" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <form action="includes/addemployee.php" method="post">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="employeeAddModalTitle">Add Employees</h5>
+                                            <button
+                                                type="button"
+                                                class="btn-close"
+                                                data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col mb-3">
+                                                    <label for="nameWithTitle" class="form-label">Full Name</label>
+                                                    <input
+                                                        type="text"
+                                                        id="nameWithTitle"
+                                                        name="full_name"
+                                                        class="form-control"
+                                                        placeholder="Enter Name"/>
+                                                </div>
+                                                <div class="col mb-3">
+                                                    <label for="phoneWithTitle" class="form-label">Phone Number</label>
+                                                    <input
+                                                        type="text"
+                                                        id="phoneWithTitle"
+                                                        name="phone_number"
+                                                        class="form-control"
+                                                        placeholder="Enter Phone Number"/>
+                                                </div>
                                             </div>
-                                            <div class="modal-body">
-                                                <div class="row">
-                                                    <div class="col mb-3">
-                                                        <label for="nameWithTitle" class="form-label">Full Name</label>
-                                                        <input
-                                                            type="text"
-                                                            id="nameWithTitle"
-                                                            name="full_name"
-                                                            class="form-control"
-                                                            placeholder="Enter Name"/>
-                                                    </div>
-                                                    <div class="col mb-3">
-                                                        <label for="phoneWithTitle" class="form-label">Phone Number</label>
-                                                        <input
-                                                            type="text"
-                                                            id="phoneWithTitle"
-                                                            name="phone_number"
-                                                            class="form-control"
-                                                            placeholder="Enter Phone Number"/>
-                                                    </div>
-                                                </div>
 
-                                                <div class="row g-2">
-                                                    <div class="col mb-3">
-                                                        <label for="nidWithTitle" class="form-label">NID/Licence No</label>
-                                                        <input
-                                                            type="text"
-                                                            id="nidWithTitle"
-                                                            name="nid_licence_no"
-                                                            class="form-control"
-                                                            placeholder="Enter NID/Licence No"/>
-                                                    </div>
-                                                    <div class="col mb-3">
-                                                        <label for="joiningWithTitle" class="form-label">Joining Date</label>
-                                                        <input
-                                                            type="text"
-                                                            id="joiningWithTitle"
-                                                            name="joining_date"
-                                                            class="form-control"
-                                                            placeholder="DD / MM / YY"
-                                                            data-date-type="html5-date-input"/>
-                                                    </div>
+                                            <div class="row g-2">
+                                                <div class="col mb-3">
+                                                    <label for="nidWithTitle" class="form-label">NID/Licence No</label>
+                                                    <input
+                                                        type="text"
+                                                        id="nidWithTitle"
+                                                        name="nid_licence_no"
+                                                        class="form-control"
+                                                        placeholder="Enter NID/Licence No"/>
                                                 </div>
-                                                <div class="row g-2">
-                                                    <div class="col mb-3">
-                                                        <label for="roleWithTitle" class="form-label">Role</label>
-                                                        <select id="roleWithTitle" name="role" class="form-select">
+                                                <div class="col mb-3">
+                                                    <label for="joiningWithTitle" class="form-label">Joining Date</label>
+                                                    <input
+                                                        type="text"
+                                                        id="joiningWithTitle"
+                                                        name="joining_date"
+                                                        class="form-control"
+                                                        placeholder="DD / MM / YY"
+                                                        data-date-type="html5-date-input"/>
+                                                </div>
+                                            </div>
+                                            <div class="row g-2">
+                                                <div class="col mb-3">
+                                                    <label for="roleWithTitle" class="form-label">Role</label>
+                                                    <select id="roleWithTitle" name="role" class="form-select">
 
-                                                            <option value="Driver">Driver</option>
-                                                            <option value="Helper">Helper</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col mb-3">
-                                                        <label for="salaryWithTitle" class="form-label">Salary</label>
-                                                        <input
-                                                            type="text"
-                                                            id="salaryWithTitle"
-                                                            name="salary"
-                                                            class="form-control"
-                                                            placeholder="Enter Salary"/>
-                                                    </div>
+                                                        <option value="Driver">Driver</option>
+                                                        <option value="Helper">Helper</option>
+                                                    </select>
                                                 </div>
-                                                <div class="row g-2">
-                                                    <div class="col mb-3">
-                                                        <label for="assignedVehiclesWithTitle" class="form-label">Assigned Vehicles</label>
-                                                        <select
-                                                            id="assignedVehiclesWithTitle"
-                                                            name="assigned_vehicle"
-                                                            class="form-select">
-                                                            <?php
+                                                <div class="col mb-3">
+                                                    <label for="salaryWithTitle" class="form-label">Salary</label>
+                                                    <input
+                                                        type="text"
+                                                        id="salaryWithTitle"
+                                                        name="salary"
+                                                        class="form-control"
+                                                        placeholder="Enter Salary"/>
+                                                </div>
+                                            </div>
+                                            <div class="row g-2">
+                                                <div class="col mb-3">
+                                                    <label for="assignedVehiclesWithTitle" class="form-label">Assigned Vehicles</label>
+                                                    <select
+                                                        id="assignedVehiclesWithTitle"
+                                                        name="assigned_vehicle"
+                                                        class="form-select">
+                                                        <?php
                                                     // Fetch assigned vehicles from the database
                                                     $query = "SELECT vehicle_number FROM vehicles";
                                                     $result = mysqli_query($conn, $query);
@@ -193,101 +192,101 @@ if (!$conn) {
                                                         echo '<option value="' . $row['vehicle_number'] . '">' . $row['vehicle_number'] . '</option>';
                                                     }
                                                     ?>
-                                                        </select>
-                                                    </div>
+                                                    </select>
                                                 </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-primary">Save changes</button>
                                             </div>
                                         </div>
-                                    </form>
-                                </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
+                        </div>
 
-                            <!--edit Modal -->
-                            <div class="modal fade" id="editEmployeeModal" tabindex="-1" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <form action="includes/editemployee.php" method="post">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="editModalTitle">Edit Employee</h5>
-                                                <button
-                                                    type="button"
-                                                    class="btn-close"
-                                                    data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
+                        <!--edit Modal -->
+                        <div class="modal fade" id="editEmployeeModal" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <form action="includes/editemployee.php" method="post">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="editModalTitle">Edit Employee</h5>
+                                            <button
+                                                type="button"
+                                                class="btn-close"
+                                                data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <!-- Hidden input field to store the employee ID -->
+                                            <input type="hidden" id="edit_employee_id" name="employee_id">
+
+                                            <div class="row">
+                                                <div class="col mb-3">
+                                                    <label for="edit_full_name" class="form-label">Full Name</label>
+                                                    <input
+                                                        type="text"
+                                                        id="edit_full_name"
+                                                        name="full_name"
+                                                        class="form-control"
+                                                        placeholder="Enter Name"/>
+                                                </div>
+                                                <div class="col mb-3">
+                                                    <label for="edit_phone_number" class="form-label">Phone Number</label>
+                                                    <input
+                                                        type="text"
+                                                        id="edit_phone_number"
+                                                        name="phone_number"
+                                                        class="form-control"
+                                                        placeholder="Enter Phone Number"/>
+                                                </div>
                                             </div>
-                                            <div class="modal-body">
-                                                <!-- Hidden input field to store the employee ID -->
-                                                <input type="hidden" id="edit_employee_id" name="employee_id">
 
-                                                <div class="row">
-                                                    <div class="col mb-3">
-                                                        <label for="edit_full_name" class="form-label">Full Name</label>
-                                                        <input
-                                                            type="text"
-                                                            id="edit_full_name"
-                                                            name="full_name"
-                                                            class="form-control"
-                                                            placeholder="Enter Name"/>
-                                                    </div>
-                                                    <div class="col mb-3">
-                                                        <label for="edit_phone_number" class="form-label">Phone Number</label>
-                                                        <input
-                                                            type="text"
-                                                            id="edit_phone_number"
-                                                            name="phone_number"
-                                                            class="form-control"
-                                                            placeholder="Enter Phone Number"/>
-                                                    </div>
+                                            <div class="row g-2">
+                                                <div class="col mb-3">
+                                                    <label for="edit_nid_licence_no" class="form-label">NID/Licence No</label>
+                                                    <input
+                                                        type="text"
+                                                        id="edit_nid_licence_no"
+                                                        name="nid_licence_no"
+                                                        class="form-control"
+                                                        placeholder="Enter NID/Licence No"/>
+                                                </div>
+                                                <div class="col mb-3">
+                                                    <label for="edit_joining_date" class="form-label">Joining Date</label>
+                                                    <input
+                                                        type="text"
+                                                        id="edit_joining_date"
+                                                        name="joining_date"
+                                                        class="form-control datepicker"
+                                                        placeholder="DD / MM / YY"/>
                                                 </div>
 
-                                                <div class="row g-2">
-                                                    <div class="col mb-3">
-                                                        <label for="edit_nid_licence_no" class="form-label">NID/Licence No</label>
-                                                        <input
-                                                            type="text"
-                                                            id="edit_nid_licence_no"
-                                                            name="nid_licence_no"
-                                                            class="form-control"
-                                                            placeholder="Enter NID/Licence No"/>
-                                                    </div>
-                                                    <div class="col mb-3">
-                                                        <label for="edit_joining_date" class="form-label">Joining Date</label>
-                                                        <input
-                                                            type="text"
-                                                            id="edit_joining_date"
-                                                            name="joining_date"
-                                                            class="form-control datepicker"
-                                                            placeholder="DD / MM / YY"/>
-                                                    </div>
-
+                                            </div>
+                                            <div class="row g-2">
+                                                <div class="col mb-3">
+                                                    <label for="edit_role" class="form-label">Role</label>
+                                                    <select id="edit_role" name="role" class="form-select">
+                                                        <option value="Driver">Driver</option>
+                                                        <option value="Helper">Helper</option>
+                                                    </select>
                                                 </div>
-                                                <div class="row g-2">
-                                                    <div class="col mb-3">
-                                                        <label for="edit_role" class="form-label">Role</label>
-                                                        <select id="edit_role" name="role" class="form-select">
-                                                            <option value="Driver">Driver</option>
-                                                            <option value="Helper">Helper</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col mb-3">
-                                                        <label for="edit_salary" class="form-label">Salary</label>
-                                                        <input
-                                                            type="text"
-                                                            id="edit_salary"
-                                                            name="salary"
-                                                            class="form-control"
-                                                            placeholder="Enter Salary"/>
-                                                    </div>
+                                                <div class="col mb-3">
+                                                    <label for="edit_salary" class="form-label">Salary</label>
+                                                    <input
+                                                        type="text"
+                                                        id="edit_salary"
+                                                        name="salary"
+                                                        class="form-control"
+                                                        placeholder="Enter Salary"/>
                                                 </div>
-                                                <div class="row g-2">
-                                                    <div class="col mb-3">
-                                                        <label for="edit_assigned_vehicle" class="form-label">Assigned Vehicles</label>
-                                                        <select id="edit_assigned_vehicle" name="assigned_vehicle" class="form-select">
-                                                            <?php
+                                            </div>
+                                            <div class="row g-2">
+                                                <div class="col mb-3">
+                                                    <label for="edit_assigned_vehicle" class="form-label">Assigned Vehicles</label>
+                                                    <select id="edit_assigned_vehicle" name="assigned_vehicle" class="form-select">
+                                                        <?php
                                 // Fetch assigned vehicles from the database
                                 $query = "SELECT vehicle_number FROM vehicles";
                                 $result = mysqli_query($conn, $query);
@@ -295,25 +294,24 @@ if (!$conn) {
                                     echo '<option value="' . $row['vehicle_number'] . '">' . $row['vehicle_number'] . '</option>';
                                 }
                                 ?>
-                                                        </select>
-                                                    </div>
+                                                    </select>
                                                 </div>
                                             </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-primary">Save changes</button>
-                                            </div>
                                         </div>
-                                    </form>
-                                </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
+                        </div>
 
-                       
                         <!-- / Content -->
                         <div class="container-xxl flex-grow-1 container-p-y">
                             <!-- Table codes start here -->
-                            
-                                                        <!-- add employee button here -->
+
+                            <!-- add employee button here -->
 
                             <!-- Button trigger modal -->
                             <div class="row">
@@ -343,7 +341,7 @@ if (!$conn) {
                             </div>
                             <!-- Hoverable Table rows -->
                             <div class="card">
-                                
+
                                 <h5 class="card-header">All Employees</h5>
                                 <div class="card-body">
                                     <div class="table-responsive text-nowrap ">
@@ -367,7 +365,7 @@ if (!$conn) {
                                             <tbody class="table-border-bottom-0">
                                                 <?php $query = "SELECT * FROM employees";
 $result = mysqli_query($conn, $query);
-
+$serialNumber = 1;
 // Check if the query executed successfully
 if (!$result) {
     die("Query failed: " . mysqli_error($conn));
@@ -375,13 +373,13 @@ if (!$result) {
 
 while ($row = mysqli_fetch_assoc($result)) : ?>
                                                 <tr>
-                                                    <td><?php echo $row['id']; ?></td>
+                                                    <td><?php echo $serialNumber++; ?></td>
                                                     <td><?php echo $row['full_name']; ?></td>
                                                     <td><?php echo $row['phone_number']; ?></td>
                                                     <td><?php echo $row['nid_licence_no']; ?></td>
                                                     <td><?php echo $row['joining_date']; ?></td>
                                                     <td><?php echo $row['role']; ?></td>
-                                                    <td><?php echo $row['salary']; ?></td>
+                                                    <td><?php echo number_format($row['salary'], 2); ?></td>
                                                     <td><?php echo $row['assigned_vehicle']; ?></td>
                                                     <td>
                                                         <button
@@ -430,7 +428,7 @@ while ($row = mysqli_fetch_assoc($result)) : ?>
         <!-- JavaScript code for fetching and displaying data -->
         <script>
 
-            // Additional code to specifically initialize the HTML5 date 
+            // Additional code to specifically initialize the HTML5 date
             $(document).ready(function () {
                 $('input[data-date-type="html5-date-input"]').attr('type', 'date');
             });
