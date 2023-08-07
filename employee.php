@@ -85,13 +85,13 @@ if (!$conn) {
             <div class="card-body">
                 <h5 class="card-title">Total Salary</h5>
                 <p class="card-text"> <i class="fa-solid fa-bangladeshi-taka-sign"></i>
-    <?php
-    $queryTotalSalary = "SELECT SUM(salary) AS total_salary FROM employees";
-    $resultTotalSalary = mysqli_query($conn, $queryTotalSalary);
-    $rowTotalSalary = mysqli_fetch_assoc($resultTotalSalary);
-    echo number_format($rowTotalSalary['total_salary'], 2); // Add number_format function
-    ?>
-</p>
+                    <?php
+                    $queryTotalSalary = "SELECT SUM(salary) AS total_salary FROM employees";
+                    $resultTotalSalary = mysqli_query($conn, $queryTotalSalary);
+                    $rowTotalSalary = mysqli_fetch_assoc($resultTotalSalary);
+                    echo $rowTotalSalary['total_salary'];
+                    ?>
+                </p>
             </div>
         </div>
     </div>
