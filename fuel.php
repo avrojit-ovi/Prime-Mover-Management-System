@@ -253,7 +253,20 @@ if (!$conn) {
                                 </div>
                                 <div class="col-md-6">
                    
-                                   
+                                <div class="row mb-3">
+    <div class="col-md-4">
+      
+        <input type="date" id="fromDate" class="form-control" title="From Date">
+    </div>
+    <div class="col-md-4">
+       
+        <input type="date" id="toDate" class="form-control" title="To date">
+    </div>
+    <div class="col-md-4">
+        <button class="btn btn-primary" onclick="applyDateFilter()">Apply Date Filter</button>
+    </div>
+</div>
+
                                 </div>
                                 
                                
@@ -374,6 +387,50 @@ if (!$conn) {
         // Show the edit modal
         $('#editfuelrcdModal').modal('show');
     }
+
+    function applyDateFilter() {
+        const fromDate = document.getElementById('fromDate').value;
+        const toDate = document.getElementById('toDate').value;
+
+        // Fetch the table rows
+        const rows = document.querySelectorAll('#vehiclesTable tbody tr');
+
+        // Loop through the rows and show/hide based on the date filter
+        for (const row of rows) {
+            const fuelDate = row.querySelector('td:nth-child(7)').textContent; // Adjust the index if needed
+            if (fromDate && fuelDate < fromDate) {
+                row.style.display = 'none';
+            } else if (toDate && fuelDate > toDate) {
+                row.style.display = 'none';
+            } else {
+                row.style.display = '';
+            }
+        }
+    }
+  // search box javascript code here 
+
+  function searchTable() {
+    const searchValue = document.getElementById('table_search').value.toLowerCase();
+    const table = document.getElementById('vehiclesTable');
+    const rows = table.getElementsByTagName('tr');
+
+    for (let i = 1; i < rows.length; i++) { // Start from index 1 to exclude the header row
+        const row = rows[i];
+        const columns = row.getElementsByTagName('td');
+        let shouldDisplay = false;
+
+        for (let column of columns) {
+            const columnText = column.textContent.toLowerCase();
+            if (columnText.indexOf(searchValue) > -1) {
+                shouldDisplay = true;
+                break;
+            }
+        }
+
+        row.style.display = shouldDisplay ? '' : 'none';
+    }
+}
+
 </script>
 
     </body>
