@@ -34,6 +34,12 @@
                 <div data-i18n="Analytics">Vehicles</div>
             </a>
         </li>
+        <li class="menu-item <?php echo (basename($_SERVER['PHP_SELF']) === 'fuel.php') ? 'active' : ''; ?>">
+            <a href="fuel.php" class="menu-link">
+            <i class="menu-icon tf-icons fa-solid fa-gas-pump"></i>
+                <div data-i18n="Analytics">Fuel</div>
+            </a>
+        </li>
         <!-- User -->
         <li class="menu-item <?php echo (basename($_SERVER['PHP_SELF']) === 'employee.php') ? 'active' : ''; ?>">
             <a href="employee.php" class="menu-link">

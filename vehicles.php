@@ -85,31 +85,7 @@ if (isset($_GET['delete_vehicle_id'])) {
                     <div class="content-wrapper">
                         <!-- Content -->
                         <div class="container-xxl flex-grow-1 container-p-y">
-                            <!-- Add vehicles button here -->
-                            <!-- Button trigger modal -->
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <button
-                                        type="button"
-                                        class="btn rounded-pill btn-outline-primary"
-                                        data-bs-toggle="modal"
-                                        data-bs-target="#vehiclesAddModal">Add Vehicles</button>
-                                </div>
-                                <div class="col-md-3"></div>
-                                <div class="col-md-3"></div>
-                                <div class="col-md-3">
-                                    <form class="d-flex">
-                                        <input
-                                            class="form-control me-2"
-                                            type="search"
-                                            id="table_search"
-                                            placeholder="Search"
-                                            aria-label="Search">
-                                        <button class="btn btn-outline-primary" type="button" onclick="searchTable()">Search</button>
-                                    </form>
-                                </div>
-                            </div>
-
+                        
                             <!-- Vertically Centered Modal -->
                             <div class="col-lg-4 col-md-6">
                                 <!-- Add Modal -->
@@ -188,13 +164,41 @@ if (isset($_GET['delete_vehicle_id'])) {
                                     </div>
                                 </div>
                                 <!-- /Edit modal -->
-                            </div>
+                            
+                        </div>
 
                             <div class="container-xxl flex-grow-1 container-p-y">
                                 <!-- Table codes start here -->
-                                <hr class="my-5"/>
+                                    <!-- Add vehicles button here -->
+                            <!-- Button trigger modal -->
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <button
+                                        type="button"
+                                        class="btn rounded-pill btn-outline-primary"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#vehiclesAddModal">Add Vehicles</button>
+                                </div>
+                                <div class="col-md-3"></div>
+                                <div class="col-md-3"></div>
+                                <div class="col-md-3">
+                                    <form class="d-flex">
+                                        <input
+                                            class="form-control me-2"
+                                            type="search"
+                                            id="table_search"
+                                            placeholder="Search"
+                                            aria-label="Search">
+                                        <button class="btn btn-outline-primary" type="button" onclick="searchTable()">Search</button>
+                                    </form>
+                                </div>
+                            </div>
+
                                 <!-- Hoverable Table rows -->
                                 <div class="card">
+
+                                
+
                                     <h5 class="card-header">All vehicles</h5>
                                     <div class="card-body">
                                         <div class="table-responsive text-nowrap ">

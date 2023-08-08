@@ -22,4 +22,6 @@ $stmt->execute();
 $stmt->bind_result($name, $profile_pic);
 $stmt->fetch();
 $stmt->close();
+
+date_default_timezone_set("Asia/Dhaka");
 ?>
