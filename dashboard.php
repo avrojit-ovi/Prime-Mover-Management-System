@@ -35,204 +35,91 @@
           <div class="content-wrapper">
             <!-- Content -->
 
-            <div class="container-xxl flex-grow-1 container-p-y">
-              <div class="row">
-                
-                <div class="col-lg-4 col-md-4 order-1">
-                  <div class="row">
-                    <div class="col-lg-6 col-md-12 col-6 mb-4">
-                      <div class="card">
-                        <div class="card-body">
-                          <div class="card-title d-flex align-items-start justify-content-between">
-                            <div class="avatar flex-shrink-0">
-                              <img
-                                src="assets/img/icons/unicons/chart-success.png"
-                                alt="chart success"
-                                class="rounded"
-                              />
-                            </div>
-                            <div class="dropdown">
-                              <button
-                                class="btn p-0"
-                                type="button"
-                                id="cardOpt3"
-                                data-bs-toggle="dropdown"
-                                aria-haspopup="true"
-                                aria-expanded="false"
-                              >
-                                <i class="bx bx-dots-vertical-rounded"></i>
-                              </button>
-                              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
-                                <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                                <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                              </div>
-                            </div>
-                          </div>
-                          <span class="fw-semibold d-block mb-1">Profit</span>
-                          <h3 class="card-title mb-2">$12,628</h3>
-                          <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +72.80%</small>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-6 col-md-12 col-6 mb-4">
-                      <div class="card">
-                        <div class="card-body">
-                          <div class="card-title d-flex align-items-start justify-content-between">
-                            <div class="avatar flex-shrink-0">
-                              <img
-                                src="assets/img/icons/unicons/wallet-info.png"
-                                alt="Credit Card"
-                                class="rounded"
-                              />
-                            </div>
-                            <div class="dropdown">
-                              <button
-                                class="btn p-0"
-                                type="button"
-                                id="cardOpt6"
-                                data-bs-toggle="dropdown"
-                                aria-haspopup="true"
-                                aria-expanded="false"
-                              >
-                                <i class="bx bx-dots-vertical-rounded"></i>
-                              </button>
-                              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
-                                <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                                <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                              </div>
-                            </div>
-                          </div>
-                          <span>Sales</span>
-                          <h3 class="card-title text-nowrap mb-1">$4,679</h3>
-                          <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +28.42%</small>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="col-12 col-md-8 col-lg-4 order-3 order-md-2">
-                  <div class="row">
-                    <div class="col-6 mb-4">
-                      <div class="card">
-                        <div class="card-body">
-                          <div class="card-title d-flex align-items-start justify-content-between">
-                            <div class="avatar flex-shrink-0">
-                              <img src="assets/img/icons/unicons/paypal.png" alt="Credit Card" class="rounded" />
-                            </div>
-                            <div class="dropdown">
-                              <button
-                                class="btn p-0"
-                                type="button"
-                                id="cardOpt4"
-                                data-bs-toggle="dropdown"
-                                aria-haspopup="true"
-                                aria-expanded="false"
-                              >
-                                <i class="bx bx-dots-vertical-rounded"></i>
-                              </button>
-                              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt4">
-                                <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                                <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                              </div>
-                            </div>
-                          </div>
-                          <span class="d-block mb-1">Payments</span>
-                          <h3 class="card-title text-nowrap mb-2">$2,456</h3>
-                          <small class="text-danger fw-semibold"><i class="bx bx-down-arrow-alt"></i> -14.82%</small>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-6 mb-4">
-                      <div class="card">
-                        <div class="card-body">
-                          <div class="card-title d-flex align-items-start justify-content-between">
-                            <div class="avatar flex-shrink-0">
-                              <img src="assets/img/icons/unicons/paypal.png" alt="Credit Card" class="rounded" />
-                            </div>
-                            <div class="dropdown">
-                              <button
-                                class="btn p-0"
-                                type="button"
-                                id="cardOpt4"
-                                data-bs-toggle="dropdown"
-                                aria-haspopup="true"
-                                aria-expanded="false"
-                              >
-                                <i class="bx bx-dots-vertical-rounded"></i>
-                              </button>
-                              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt4">
-                                <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                                <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                              </div>
-                            </div>
-                          </div>
-                          <span class="d-block mb-1">Payments</span>
-                          <h3 class="card-title text-nowrap mb-2">$2,456</h3>
-                          <small class="text-danger fw-semibold"><i class="bx bx-down-arrow-alt"></i> -14.82%</small>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-6 mb-4">
-                      <div class="card">
-                        <div class="card-body">
-                          <div class="card-title d-flex align-items-start justify-content-between">
-                            <div class="avatar flex-shrink-0">
-                              <img src="assets/img/icons/unicons/cc-primary.png" alt="Credit Card" class="rounded" />
-                            </div>
-                            <div class="dropdown">
-                              <button
-                                class="btn p-0"
-                                type="button"
-                                id="cardOpt1"
-                                data-bs-toggle="dropdown"
-                                aria-haspopup="true"
-                                aria-expanded="false"
-                              >
-                                <i class="bx bx-dots-vertical-rounded"></i>
-                              </button>
-                              <div class="dropdown-menu" aria-labelledby="cardOpt1">
-                                <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                                <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                              </div>
-                            </div>
-                          </div>
-                          <span class="fw-semibold d-block mb-1">Transactions</span>
-                          <h3 class="card-title mb-2">$14,857</h3>
-                          <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +28.14%</small>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-6 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                          <div class="d-flex justify-content-between flex-sm-row flex-column gap-3">
-                            <div class="d-flex flex-sm-column flex-row align-items-start justify-content-between">
-                              <div class="card-title">
-                                <h5 class="text-nowrap mb-2">Profile Report</h5>
-                                <span class="badge bg-label-warning rounded-pill">Year 2021</span>
-                              </div>
-                              <div class="mt-sm-auto">
-                                <small class="text-success text-nowrap fw-semibold"
-                                  ><i class="bx bx-chevron-up"></i> 68.2%</small
-                                >
-                                <h3 class="mb-0">$84,686k</h3>
-                              </div>
-                            </div>
-                            <div id="profileReportChart"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <!-- </div>
-    <div class="row"> -->
-                   
-                  </div>
-                </div>
-              </div>
-              
+      <!-- 4 card codes start here  -->
+<div class="container-xxl flex-grow-1 container-p-y">
+<div class="row mb-3">
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">First 15 days calculation</h5>
+                <p class="card-text">
+                    <?php
+                        // Calculate total FUEL LITER and total taka for the first 15 days of the current month
+                        $currentMonth = date('m');
+                        $queryFirst15Days = "SELECT SUM(fuel_liter) AS total_fuel_liter, SUM(fuel_liter * fuel_rate) AS total_taka, MONTHNAME(fuel_date) AS month_name
+                                            FROM fuel_record
+                                            WHERE MONTH(fuel_date) = $currentMonth AND DAY(fuel_date) <= 15";
+                        $resultFirst15Days = mysqli_query($conn, $queryFirst15Days);
+                        $rowFirst15Days = mysqli_fetch_assoc($resultFirst15Days);
+                        echo "Month: " . $rowFirst15Days['month_name'] . "<br>";
+                        echo "TOTAL FUEL LITER: " . $rowFirst15Days['total_fuel_liter'] . " <br> Total Taka: " . number_format($rowFirst15Days['total_taka'], 2, '.', ',');
+                    ?>
+                </p>
             </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Last 15 days calculation</h5>
+                <p class="card-text">
+                    <?php
+                        // Calculate total FUEL LITER and total taka for the last 15 days of the current month
+                        $queryLast15Days = "SELECT SUM(fuel_liter) AS total_fuel_liter, SUM(fuel_liter * fuel_rate) AS total_taka, MONTHNAME(fuel_date) AS month_name
+                                            FROM fuel_record
+                                            WHERE MONTH(fuel_date) = $currentMonth AND DAY(fuel_date) > 15";
+                        $resultLast15Days = mysqli_query($conn, $queryLast15Days);
+                        $rowLast15Days = mysqli_fetch_assoc($resultLast15Days);
+                        echo "Month: " . $rowLast15Days['month_name'] . "<br>";
+                        echo "TOTAL FUEL LITER: " . $rowLast15Days['total_fuel_liter'] . " <br> Total Taka: " . number_format($rowLast15Days['total_taka'], 2, '.', ',');
+                    ?>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Current Month calculation</h5>
+                <p class="card-text">
+                    <?php
+                        // Calculate total FUEL LITER and total taka for the entire current month
+                        $queryCurrentMonth = "SELECT SUM(fuel_liter) AS total_fuel_liter, SUM(fuel_liter * fuel_rate) AS total_taka, MONTHNAME(fuel_date) AS month_name
+                                              FROM fuel_record
+                                              WHERE MONTH(fuel_date) = $currentMonth";
+                        $resultCurrentMonth = mysqli_query($conn, $queryCurrentMonth);
+                        $rowCurrentMonth = mysqli_fetch_assoc($resultCurrentMonth);
+                        echo "Month: " . $rowCurrentMonth['month_name'] . "<br>";
+                        echo "TOTAL FUEL LITER: " . $rowCurrentMonth['total_fuel_liter'] . " <br> Total Taka: " . number_format($rowCurrentMonth['total_taka'], 2, '.', ',');
+                    ?>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Past Month calculation</h5>
+                <p class="card-text">
+                    <?php
+                        // Calculate total FUEL LITER and total taka for the previous month
+                        $previousMonth = date('m', strtotime('-1 month'));
+                        $queryPreviousMonth = "SELECT SUM(fuel_liter) AS total_fuel_liter, SUM(fuel_liter * fuel_rate) AS total_taka, MONTHNAME(fuel_date) AS month_name
+                                               FROM fuel_record
+                                               WHERE MONTH(fuel_date) = $previousMonth";
+                        $resultPreviousMonth = mysqli_query($conn, $queryPreviousMonth);
+                        $rowPreviousMonth = mysqli_fetch_assoc($resultPreviousMonth);
+                        echo "Month: " . $rowPreviousMonth['month_name'] . "<br>";
+                        echo "TOTAL FUEL LITER: " . $rowPreviousMonth['total_fuel_liter'] . " <br> Total Taka: " . number_format($rowPreviousMonth['total_taka'], 2, '.', ',');
+                    ?>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- 4 card codes end here  -->
             <!-- / Content -->
 
             <!-- Footer -->
