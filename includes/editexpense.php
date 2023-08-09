@@ -1,30 +1,27 @@
 <?php
 require_once 'db.php';
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Retrieve form data
+if (isset($_POST['expense_id'])) {
     $expenseId = $_POST['expense_id'];
     $expenseName = $_POST['edit_expense_name'];
     $amount = $_POST['edit_amount'];
+    $vendor = $_POST['edit_vendor']; // New field for Vendor
+    $paidAmount = $_POST['edit_paid_amount']; // New field for Paid Amount
+    $dueAmount = $_POST['edit_due_amount']; // New field for Due Amount
     $vehicleNumber = $_POST['edit_vehicle_number'];
     $expenseDate = $_POST['edit_expense_date'];
 
-    // Update expense record in the database
-    $query = "UPDATE expenses
-              SET expense_name = ?, amount = ?, vehicle_number = ?, expense_date = ?
-              WHERE id = ?";
-    
-    $stmt = mysqli_prepare($conn, $query);
-    mysqli_stmt_bind_param($stmt, "ssssi", $expenseName, $amount, $vehicleNumber, $expenseDate, $expenseId);
-    
-    if (mysqli_stmt_execute($stmt)) {
-        mysqli_stmt_close($stmt);
-        mysqli_close($conn);
-        header('Location: ../expense.php'); // Redirect back to the expense page
+    $updateQuery = "UPDATE expenses SET expense_name = '$expenseName', amount = $amount, vendor = '$vendor', paid_amount = $paidAmount, due_amount = $dueAmount, vehicle_number = '$vehicleNumber', expense_date = '$expenseDate' WHERE id = $expenseId";
+
+    if (mysqli_query($conn, $updateQuery)) {
+        header("Location: ../expense.php?edit_success");
         exit();
     } else {
-        // Handle the error
-        echo "Error: " . mysqli_error($conn);
+        header("Location: ../expense.php?edit_error");
+        exit();
     }
+} else {
+    header("Location: ../expense.php");
+    exit();
 }
 ?>
