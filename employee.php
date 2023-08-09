@@ -384,7 +384,7 @@ while ($row = mysqli_fetch_assoc($result)) : ?>
                                                     <td>
                                                         <button
                                                             type="button"
-                                                            class="btn btn-sm btn-info"
+                                                            class="btn btn-sm rounded-pill btn-outline-info"
                                                             data-bs-toggle="modal"
                                                             data-bs-target="#editEmployeeModal"
                                                             onclick="openEditModal(<?php echo $row['id']; ?>, '<?php echo $row['full_name']; ?>', '<?php echo $row['phone_number']; ?>', '<?php echo $row['nid_licence_no']; ?>', '<?php echo $row['joining_date']; ?>', '<?php echo $row['role']; ?>', '<?php echo $row['salary']; ?>', '<?php echo $row['assigned_vehicle']; ?>')">
@@ -392,7 +392,7 @@ while ($row = mysqli_fetch_assoc($result)) : ?>
                                                         </button>
                                                         <a
                                                             href="includes/deleteemployee.php?id=<?php echo $row['id']; ?>"
-                                                            class="btn btn-sm btn-danger"
+                                                            class="btn rounded-pill btn-sm btn-outline-danger"
                                                             onclick="return confirm('Are you sure you want to delete this employee?')">
                                                             <i class="fa-solid fa-trash"></i>
                                                         </a>

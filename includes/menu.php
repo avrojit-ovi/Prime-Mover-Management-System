@@ -53,6 +53,12 @@
                 <div data-i18n="Analytics">User</div>
             </a>
         </li>
+        <li class="menu-item <?php echo (basename($_SERVER['PHP_SELF']) === 'expense.php') ? 'active' : ''; ?>">
+            <a href="expense.php" class="menu-link">
+            <i class='menu-icon tf-icons bx bx-detail'></i>
+                <div data-i18n="Analytics">Expenses</div>
+            </a>
+        </li>
     </ul>
 </aside>
 

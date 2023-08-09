@@ -151,7 +151,8 @@ if (!$conn) {
                                             <div class="row">
                                                 <div class="col mb-3">
                                                     <label for="vehicleNo" class="form-label">Vehicle No</label>
-                                                    <select id="vehicleNo" name="vehicle_number" class="form-select">
+                                                    <select id="vehicleNo" name="vehicle_number" class="form-select" required>
+                                                        <option value="" selected disabled>---- Please Select----</option>
                                                         <?php
                                 // Fetch vehicle numbers from the database
                                 $queryVehicles = "SELECT vehicle_number FROM vehicles";
@@ -171,7 +172,7 @@ if (!$conn) {
                                                         id="fuelLiter"
                                                         name="fuel_liter"
                                                         class="form-control"
-                                                        placeholder="Enter Fuel Liter"/>
+                                                        placeholder="Enter Fuel Liter" required/>
                                                 </div>
                                                 <div class="col mb-3">
                                                     <label for="fuelRate" class="form-label">Fuel Rate</label>
@@ -187,11 +188,12 @@ if (!$conn) {
                                                         name="fuel_rate"
                                                         class="form-control"
                                                         value="<?php echo $rowFuelRate['fuel_rate']; ?>"
-                                                        placeholder="Enter Fuel Rate"/>
+                                                        placeholder="Enter Fuel Rate" />
                                                 </div>
                                                 <div class="col mb-3">
                                                     <label for="driverName" class="form-label">Driver Name</label>
-                                                    <select id="driverName" name="driver_name" class="form-select">
+                                                    <select id="driverName" name="driver_name" class="form-select" required>
+                                                        <option value="" selected disabled>Please select</option>
                                                         <?php
                                 // Fetch driver names from the database
                                 $queryDrivers = "SELECT full_name FROM employees WHERE role = 'Driver'";
@@ -217,8 +219,8 @@ if (!$conn) {
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-primary">Save changes</button>
+                                            <button type="button" class="btn rounded-pill btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn rounded-pill btn-primary">Save changes</button>
                                         </div>
                                     </div>
                                 </form>
@@ -344,7 +346,7 @@ if (!$conn) {
                                             <input type="date" id="toDate" class="form-control" title="To date">
                                         </div>
                                         <div class="col-md-4">
-                                            <button class="btn btn-primary" onclick="applyDateFilter()">Apply Date Filter</button>
+                                            <button class="btn rounded-pill btn-outline-primary" onclick="applyDateFilter()">Apply Date Filter</button>
                                         </div>
                                     </div>
 
@@ -408,7 +410,7 @@ if (!$conn) {
                                                     <td>
                                                         <button
                                                             type="button"
-                                                            class="btn btn-sm btn-info"
+                                                            class="btn rounded-pill btn-sm btn-outline-info"
                                                             data-bs-toggle="modal"
                                                             data-bs-target="#editfuelrcdModal"
                                                             onclick="openEditModal(<?php echo $rowFuelRecord['id']; ?>, '<?php echo $rowFuelRecord['vehicle_number']; ?>', '<?php echo $rowFuelRecord['fuel_liter']; ?>', '<?php echo $rowFuelRecord['fuel_rate']; ?>', '<?php echo $rowFuelRecord['driver_name']; ?>', '<?php echo $rowFuelRecord['fuel_date']; ?>')">
@@ -416,7 +418,7 @@ if (!$conn) {
                                                         </button>
                                                         <a
                                                             href="includes/deletefuelrcd.php?id=<?php echo $rowFuelRecord['id']; ?>"
-                                                            class="btn btn-sm btn-danger"
+                                                            class="btn rounded-pill btn-sm btn-outline-danger"
                                                             onclick="return confirm('Are you sure you want to delete this fuel record?')">
                                                             <i class="fa-solid fa-trash"></i>
                                                         </a>

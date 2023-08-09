@@ -35,8 +35,93 @@
           <div class="content-wrapper">
             <!-- Content -->
 
-      <!-- 4 card codes start here  -->
-<div class="container-xxl flex-grow-1 container-p-y">
+
+  <!--Expenses 4 divs codes start here  -->
+  <div class="container-xxl flex-grow-1 container-p-y">
+    <!-- Add the following code above the "Button trigger modal" section -->
+
+
+<div class="row mb-3">
+
+<!-- First 15 days Expense -->
+<div class="col-md-3">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">First 15 days Expense</h5>
+            <?php
+            // Calculate total expenses and amount for the first 15 days of the current month
+            $first15DaysExpensesQuery = "SELECT COUNT(id) AS total_expenses, SUM(amount) AS total_amount FROM expenses WHERE DAY(expense_date) <= 15 AND MONTH(expense_date) = MONTH(CURRENT_DATE())";
+            $first15DaysExpensesResult = mysqli_query($conn, $first15DaysExpensesQuery);
+            $first15DaysExpensesData = mysqli_fetch_assoc($first15DaysExpensesResult);
+            ?>
+            <p>Total Expenses: <?php echo $first15DaysExpensesData['total_expenses']; ?></p>
+            <p>Total Amount: <?php echo $first15DaysExpensesData['total_amount']; ?></p>
+            <p>Month: <?php echo date('F'); ?></p>
+        </div>
+    </div>
+</div>
+
+<!-- Last 15 days Expense -->
+<div class="col-md-3">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Last 15 days Expense</h5>
+            <?php
+            // Calculate total expenses and amount for the last 15 days of the current month
+            $last15DaysExpensesQuery = "SELECT COUNT(id) AS total_expenses, SUM(amount) AS total_amount FROM expenses WHERE DAY(expense_date) > 15 AND MONTH(expense_date) = MONTH(CURRENT_DATE())";
+            $last15DaysExpensesResult = mysqli_query($conn, $last15DaysExpensesQuery);
+            $last15DaysExpensesData = mysqli_fetch_assoc($last15DaysExpensesResult);
+            ?>
+            <p>Total Expenses: <?php echo $last15DaysExpensesData['total_expenses']; ?></p>
+            <p>Total Amount: <?php echo $last15DaysExpensesData['total_amount']; ?></p>
+            <p>Month: <?php echo date('F'); ?></p>
+        </div>
+    </div>
+</div>
+
+<!-- Current Month Expense -->
+<div class="col-md-3">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Current Month Expense</h5>
+            <?php
+            // Calculate total expenses and amount for the entire current month
+            $currentMonthExpensesQuery = "SELECT COUNT(id) AS total_expenses, SUM(amount) AS total_amount FROM expenses WHERE MONTH(expense_date) = MONTH(CURRENT_DATE())";
+            $currentMonthExpensesResult = mysqli_query($conn, $currentMonthExpensesQuery);
+            $currentMonthExpensesData = mysqli_fetch_assoc($currentMonthExpensesResult);
+            ?>
+            <p>Total Expenses: <?php echo $currentMonthExpensesData['total_expenses']; ?></p>
+            <p>Total Amount: <?php echo $currentMonthExpensesData['total_amount']; ?></p>
+            <p>Month: <?php echo date('F'); ?></p>
+        </div>
+    </div>
+</div>
+
+<!-- Previous Month Expense -->
+<div class="col-md-3">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Previous Month Expense</h5>
+            <?php
+            // Calculate total expenses and amount for the entire previous month
+            $previousMonthExpensesQuery = "SELECT COUNT(id) AS total_expenses, SUM(amount) AS total_amount FROM expenses WHERE MONTH(expense_date) = MONTH(CURRENT_DATE() - INTERVAL 1 MONTH)";
+            $previousMonthExpensesResult = mysqli_query($conn, $previousMonthExpensesQuery);
+            $previousMonthExpensesData = mysqli_fetch_assoc($previousMonthExpensesResult);
+            ?>
+            <p>Total Expenses: <?php echo $previousMonthExpensesData['total_expenses']; ?></p>
+            <p>Total Amount: <?php echo $previousMonthExpensesData['total_amount']; ?></p>
+            <p>Month: <?php echo date('F', strtotime('-1 month')); ?></p>
+        </div>
+    </div>
+</div>
+
+
+  </div>
+
+  <!-- Expenses 4 divs codes end here  -->
+
+      <!-- fuel 4 card codes start here  -->
+
 <div class="row mb-3">
     <div class="col-md-3">
         <div class="card">
@@ -119,7 +204,8 @@
 </div>
 </div>
 
-<!-- 4 card codes end here  -->
+<!--fuel 4 card codes end here  -->
+
             <!-- / Content -->
 
             <!-- Footer -->
