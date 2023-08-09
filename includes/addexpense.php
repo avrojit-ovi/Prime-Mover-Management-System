@@ -4,35 +4,32 @@ require_once 'db.php';
 
 // Check if the form is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Retrieve form data
+    // Get input values from the form
     $expenseName = $_POST['expense_name'];
     $amount = $_POST['amount'];
     $vehicleNumber = $_POST['vehicle_number'];
     $expenseDate = $_POST['expense_date'];
+    $vendor = $_POST['vendor'];
+    $paidAmount = $_POST['paid_amount'];
+    $dueAmount = $_POST['due_amount']; // This will be calculated later
 
-    // Prepare and execute the SQL query to insert the expense record
-    $query = "INSERT INTO expenses (expense_name, amount, vehicle_number, expense_date) VALUES (?, ?, ?, ?)";
-    $stmt = mysqli_prepare($conn, $query);
-    
-    mysqli_stmt_bind_param($stmt, "sdss", $expenseName, $amount, $vehicleNumber, $expenseDate);
-    
-    if (mysqli_stmt_execute($stmt)) {
-        // Successful insertion
-        mysqli_stmt_close($stmt);
-        
-        // Redirect back to the expense.php page
-        header("Location: ../expense.php");
-        exit();
+    // Insert data into the expenses table
+    $insertQuery = "INSERT INTO expenses (expense_name, amount, vehicle_number, expense_date, vendor, paid_amount, due_amount)
+                    VALUES ('$expenseName', '$amount', '$vehicleNumber', '$expenseDate', '$vendor', '$paidAmount', '$dueAmount')";
+
+    if (mysqli_query($conn, $insertQuery)) {
+        // Calculate due amount
+        $dueAmount = $amount - $paidAmount;
+
+        // Update the due amount in the database
+        $updateDueQuery = "UPDATE expenses SET due_amount = '$dueAmount' WHERE expense_name = '$expenseName' AND expense_date = '$expenseDate'";
+        mysqli_query($conn, $updateDueQuery);
+
+        // Redirect back to the main page or display a success message
+        header('Location: ../expense.php');
     } else {
-        // Error occurred
-        $error = "Error: " . mysqli_error($conn);
-        mysqli_stmt_close($stmt);
-        
-        // You can handle the error as needed, such as displaying an error message or logging it
-        // For example: echo "Failed to insert expense: " . $error;
+        // Handle error, maybe redirect back with an error message
+        echo 'Error: ' . mysqli_error($conn);
     }
 }
-
-// Close the database connection
-mysqli_close($conn);
 ?>
