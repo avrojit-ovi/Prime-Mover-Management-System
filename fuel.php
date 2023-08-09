@@ -517,33 +517,32 @@ if (!$conn) {
             // search box javascript code here
 
             function searchTable() {
-                const searchValue = document
-                    .getElementById('table_search')
-                    .value
-                    .toLowerCase();
-                const table = document.getElementById('vehiclesTable');
-                const rows = table.getElementsByTagName('tr');
+    const searchValue = document.getElementById('table_search').value.toLowerCase();
+    const table = document.getElementById('vehiclesTable');
+    const rows = table.getElementsByTagName('tr');
+    
+    // Iterate through each row
+    for (let i = 1; i < rows.length; i++) { // Start from index 1 to exclude the header row
+        const row = rows[i];
+        const columns = row.getElementsByTagName('td');
+        let shouldDisplay = false;
 
-                for (let i = 1; i < rows.length; i++) { // Start from index 1 to exclude the header row
-                    const row = rows[i];
-                    const columns = row.getElementsByTagName('td');
-                    let shouldDisplay = false;
-
-                    for (let column of columns) {
-                        const columnText = column
-                            .textContent
-                            .toLowerCase();
-                        if (columnText.indexOf(searchValue) > -1) {
-                            shouldDisplay = true;
-                            break;
-                        }
-                    }
-
-                    row.style.display = shouldDisplay
-                        ? ''
-                        : 'none';
-                }
+        // Iterate through each cell in the row
+        for (let j = 0; j < columns.length; j++) {
+            const cell = columns[j];
+            const columnText = cell.textContent.toLowerCase();
+            
+            // Compare cell text with search value
+            if (columnText.indexOf(searchValue) > -1) {
+                shouldDisplay = true;
+                break; // If a match is found, no need to continue checking other cells
             }
+        }
+
+        // Display or hide row based on search result
+        row.style.display = shouldDisplay ? '' : 'none';
+    }
+}
         </script>
 
     </body>
