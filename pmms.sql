@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 08, 2023 at 10:43 PM
+-- Generation Time: Aug 09, 2023 at 02:58 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -62,6 +62,32 @@ INSERT INTO `employees` (`id`, `full_name`, `phone_number`, `nid_licence_no`, `j
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `expenses`
+--
+
+CREATE TABLE `expenses` (
+  `id` int(11) NOT NULL,
+  `expense_name` varchar(255) NOT NULL,
+  `amount` decimal(10,2) NOT NULL,
+  `vehicle_number` varchar(20) NOT NULL,
+  `expense_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `expenses`
+--
+
+INSERT INTO `expenses` (`id`, `expense_name`, `amount`, `vehicle_number`, `expense_date`) VALUES
+(2, 'Paint', 1000.00, 'CMD 81-2009', '2023-08-09'),
+(3, 'Paint', 1000.00, 'CMD 810732', '2023-08-07'),
+(4, 'parts', 20.00, 'CM- CHA-51-1719', '2023-08-08'),
+(5, 'parts', 1000.00, 'CME-810275', '2023-08-16'),
+(6, 'Paint', 20.00, 'CME-810275', '2023-08-17'),
+(7, 'parts', 1000.00, 'CME-810275', '2023-07-12');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `fuel_rate`
 --
 
@@ -101,7 +127,8 @@ INSERT INTO `fuel_record` (`id`, `vehicle_number`, `fuel_liter`, `fuel_rate`, `d
 (17, 'CME-810275', 20.00, 109.00, 'MR PABITRO DAY', '2023-06-22'),
 (18, 'CME-810275', 20.00, 109.00, 'MR PABITRO DAY', '2023-08-09'),
 (19, 'CME-810275', 20.00, 109.00, 'MR PABITRO DAY', '2023-08-31'),
-(20, 'CME-810275', 20.00, 109.00, 'MR PABITRO DAY', '2023-07-13');
+(20, 'CME-810275', 20.00, 109.00, 'MR PABITRO DAY', '2023-07-13'),
+(21, 'CME-810275', 20.00, 109.00, 'MR PABITRO DAY', '2023-08-09');
 
 -- --------------------------------------------------------
 
@@ -162,6 +189,12 @@ ALTER TABLE `employees`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `expenses`
+--
+ALTER TABLE `expenses`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `fuel_rate`
 --
 ALTER TABLE `fuel_rate`
@@ -196,6 +229,12 @@ ALTER TABLE `employees`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
+-- AUTO_INCREMENT for table `expenses`
+--
+ALTER TABLE `expenses`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `fuel_rate`
 --
 ALTER TABLE `fuel_rate`
@@ -205,7 +244,7 @@ ALTER TABLE `fuel_rate`
 -- AUTO_INCREMENT for table `fuel_record`
 --
 ALTER TABLE `fuel_record`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `users`

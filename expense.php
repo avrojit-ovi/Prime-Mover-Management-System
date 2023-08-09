@@ -337,7 +337,7 @@ if (!$conn) {
                             <td>
                             <button
     type="button"
-    class="btn btn-sm btn-info edit-button"
+    class="btn rounded-pill btn-sm btn-outline-info edit-button"
     data-bs-toggle="modal"
     data-bs-target="#editExpenseModal"
     data-id="<?php echo $rowExpense['id']; ?>"
@@ -347,7 +347,7 @@ if (!$conn) {
     data-date="<?php echo $rowExpense['expense_date']; ?>">
     <i class="fa-regular fa-pen-to-square"></i>
 </button>
-<a href="includes/deleteExpense.php?id=<?php echo $rowExpense['id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this expense record?')">
+<a href="includes/deleteExpense.php?id=<?php echo $rowExpense['id']; ?>" class="btn rounded-pill btn-sm btn-outline-danger" onclick="return confirm('Are you sure you want to delete this expense record?')">
     <i class="fa-solid fa-trash"></i>
 </a>
 </td>
