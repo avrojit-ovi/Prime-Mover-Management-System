@@ -24,6 +24,7 @@ if (!$conn) {
 
         <?php require_once "includes/css.php"; ?>
         <!-- Additional CSS or stylesheets can be included here -->
+        
 
     </head>
 
@@ -298,17 +299,24 @@ if (!$conn) {
                                             placeholder="Search by name, phone, role, salary, NID, date, vehicle..."
                                             aria-label="Search">
                                         <button class="btn btn-outline-primary" type="button" onclick="searchTable()"><i class='bx bx-search'></i></button>&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <button class="btn rounded-pill  btn-outline-info" onclick="reloadTable()">
-            <i class="fas fa-sync-alt"></i>
-        </button>
+                    
                                     </form>
                                 </div>
+    
+
                             </div>
                             <!-- Hoverable Table rows -->
+                            <div id="printable-content">
                             <div class="card">
-<h5 class="card-header">Expense Record</h5>
-   
-   
+                            <h5 class="card-header d-flex justify-content-between align-items-center">
+            Expense Record
+            <div>
+            <button class="btn rounded-pill btn-outline-primary" onclick="printTable()"><i class='bx bx-printer'></i></button>
+            <button class="btn rounded-pill  btn-outline-info" onclick="reloadTable()">
+            <i class="fas fa-sync-alt"></i>
+        </button>
+        </div>
+        </h5>
                                 
                                
                                 <div class="card-body">
@@ -327,6 +335,7 @@ if (!$conn) {
                                                     <th>Vehicle No.</th>
                                                     <th>Date</th>
                                                     <th>Actions</th>
+                                                    <th>Remark</th>
                                                 </tr>
                                             </thead>
                                             <tbody class="table-border-bottom-0">
@@ -347,6 +356,7 @@ if (!$conn) {
                                                     <td class="text-danger"><?php echo $rowExpense['due_amount']; ?></td>
                                                     <td><?php echo $rowExpense['vehicle_number']; ?></td>
                                                     <td><?php echo $rowExpense['expense_date']; ?></td>
+                                                    
                                                     <td>
                                                         <button
                                                             type="button"
@@ -370,6 +380,7 @@ if (!$conn) {
                                                             <i class="fa-solid fa-trash"></i>
                                                         </a>
                                                     </td>
+                                                    <td></td>
 
                                                 </tr>
                                                 <?php } ?>
@@ -377,6 +388,7 @@ if (!$conn) {
                                         </table>
                                     </div>
                                 </div>
+                            </div>
                             </div>
                             <!--/ Hoverable Table rows -->
                         </div>
@@ -560,6 +572,72 @@ if (!$conn) {
         noDataRow.remove();
     }
 }
+
+/// Function to print the table
+function printTable() {
+    const originalTable = document.getElementById("expenseTable");
+    const clonedTable = originalTable.cloneNode(true);
+
+   // Remove the action and remark columns from the cloned table
+const actionColumnIndex = clonedTable.rows[0].cells.length - 2; // Adjust for the Remark column
+for (let i = 0; i < clonedTable.rows.length; i++) {
+    clonedTable.rows[i].deleteCell(actionColumnIndex);
+}
+    // Create a new print window
+    const printWindow = window.open("", "_blank");
+    
+    // Add the table and additional styling for printing
+    printWindow.document.write(`
+        <html>
+        <head>
+            <title>Print Table</title>
+            <style>
+                /* Table styling */
+                table {
+                    border-collapse: collapse;
+                    width: 100%;
+                }
+                th, td {
+                    border: 1px solid black;
+                    padding: 8px;
+                    text-align: left;
+                }
+                th {
+                    background-color: #f2f2f2;
+                }
+                /* Card styling */
+                .card {
+                    border: 1px solid #ccc;
+                    border-radius: 8px;
+                    margin: 10px;
+                    padding: 10px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                }
+            </style>
+        </head>
+        <body>
+            <div class="card">
+                <div class="card-header">
+                    <h2>Expense Table</h2>
+                </div>
+                <div class="card-body">
+                    ${clonedTable.outerHTML}
+                </div>
+            </div>
+        </body>
+        </html>
+    `);
+    
+    // Close the document writing and initiate the print
+    printWindow.document.close();
+    printWindow.print();
+
+    // Close the print window automatically
+    printWindow.addEventListener("afterprint", function() {
+        printWindow.close();
+    });
+}
+
 
         </script>
 
