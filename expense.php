@@ -297,8 +297,13 @@ if (!$conn) {
                                             id="table_search"
                                             placeholder="Search by name, phone, role, salary, NID, date, vehicle..."
                                             aria-label="Search">
+<<<<<<< HEAD
+                                        <button class="btn btn-outline-primary" type="button" onclick="searchTable()"><i class='bx bx-search'></i></button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <button class="btn rounded-pill  btn-outline-info" onclick="reloadTable()">
+=======
                                         <button class="btn btn-outline-primary" type="button" onclick="searchTable()">Search</button>&nbsp;
                                         <button class="btn rounded-pill btn-sm btn-outline-info" onclick="reloadTable()">
+>>>>>>> origin/main
             <i class="fas fa-sync-alt"></i>
         </button>
                                     </form>
