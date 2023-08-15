@@ -59,6 +59,18 @@
                 <div data-i18n="Analytics">Expenses</div>
             </a>
         </li>
+        <li class="menu-item <?php echo (basename($_SERVER['PHP_SELF']) === 'trip_type.php') ? 'active' : ''; ?>">
+            <a href="trip_type.php" class="menu-link">
+            <i class='menu-icon tf-icons bx bx-detail'></i>
+                <div data-i18n="Analytics">Trip Type</div>
+            </a>
+        </li>
+        <li class="menu-item <?php echo (basename($_SERVER['PHP_SELF']) === 'tripallowance.php') ? 'active' : ''; ?>">
+            <a href="tripallowance.php" class="menu-link">
+            <i class='menu-icon tf-icons bx bx-detail'></i>
+                <div data-i18n="Analytics">Trip Allowance</div>
+            </a>
+        </li>
     </ul>
 </aside>
 
