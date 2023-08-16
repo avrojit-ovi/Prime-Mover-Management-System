@@ -1,0 +1,137 @@
+    <!-- edit Trip Modal -->
+    <div
+                            class="modal fade"
+                            id="editTripModal"
+                            tabindex="-1"
+                            aria-labelledby="editTripModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="editTripModalLabel">Edit Trip Record</h5>
+                                        <button
+                                            type="button"
+                                            class="btn-close"
+                                            data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <!-- Form to add a new trip record -->
+                                        <form action="includes/update_trip-rcd.php" method="post">
+                                            <input type="hidden" id="editTripId" name="editTripId">
+                                            <div class="row g-2">
+                                                <div class="col-md-6 mb-3">
+                                                    <label for="editTripName" class="form-label">Trip Name</label>
+                                                    <select
+    class="form-select"
+    id="editTripName"
+    name="editTripName"
+    onchange="updateFields(this)">
+    <option value="0" selected="selected" disabled="disabled">Please Select</option>
+    <?php
+    $queryTripTypes = "SELECT id, trip_name, amount, driver_allowance, helper_allowance FROM trip_type";
+    $resultTripTypes = mysqli_query($conn, $queryTripTypes);
+    while ($rowTripType = mysqli_fetch_assoc($resultTripTypes)) {
+        echo '<option value="' . $rowTripType['id'] . '" data-amount="' . $rowTripType['amount'] . '" data-driver-allowance="' . $rowTripType['driver_allowance'] . '" data-helper-allowance="' . $rowTripType['helper_allowance'] . '">' . $rowTripType['trip_name'] . '</option>';
+    }
+    ?>
+</select>
+                                                </div>
+                                                <div class="col-md-6 mb-3">
+                                                    <label for="editVehicleNo" class="form-label">Vehicle No</label>
+                                                    <select id="editVehicleNo" name="editVehicleNo" class="form-select">
+                                                        <?php
+                                // Fetch vehicle numbers from the database
+                                $queryVehicles = "SELECT vehicle_number FROM vehicles";
+                                $resultVehicles = mysqli_query($conn, $queryVehicles);
+                                while ($rowVehicle = mysqli_fetch_assoc($resultVehicles)) {
+                                    echo '<option value="' . $rowVehicle['vehicle_number'] . '">' . $rowVehicle['vehicle_number'] . '</option>';
+                                }
+                                ?>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row g-2">
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="editAmount" class="form-label">Amount</label>
+                                                    <input type="text" class="form-control" id="editAmount" name="editAmount">
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="editDriverAllowance" class="form-label">Driver Allowance</label>
+                                                    <input
+                                                        type="text"
+                                                        class="form-control"
+                                                        id="editDriverAllowance"
+                                                        name="editDriverAllowance">
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="editHelperAllowance" class="form-label">Helper Allowance</label>
+                                                    <input
+                                                        type="text"
+                                                        class="form-control"
+                                                        id="editHelperAllowance"
+                                                        name="editHelperAllowance">
+                                                </div>
+                                            </div>
+                                            <div class="row g-2">
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="editDriverName" class="form-label">Driver</label>
+                                                    <select
+                                                        id="editDriverName"
+                                                        name="editDriverName"
+                                                        class="form-select"
+                                                        required="required">
+                                                        <option value="" selected="selected" disabled="disabled">Please select</option>
+                                                        <?php
+                                // Fetch driver names from the database
+                                $queryDrivers = "SELECT full_name FROM employees WHERE role = 'Driver'";
+                                $resultDrivers = mysqli_query($conn, $queryDrivers);
+                                while ($rowDriver = mysqli_fetch_assoc($resultDrivers)) {
+                                    echo '<option value="' . $rowDriver['full_name'] . '">' . $rowDriver['full_name'] . '</option>';
+                                }
+                                ?>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="editHelperName" class="form-label">Helper</label>
+                                                    <select
+                                                        id="editHelperName"
+                                                        name="editHelperName"
+                                                        class="form-select"
+                                                        required="required">
+                                                        <option value="" selected="selected" disabled="disabled">Please select</option>
+                                                        <?php
+                                // Fetch driver names from the database
+                                $queryDrivers = "SELECT full_name FROM employees WHERE role = 'Helper'";
+                                $resultDrivers = mysqli_query($conn, $queryDrivers);
+                                while ($rowDriver = mysqli_fetch_assoc($resultDrivers)) {
+                                    echo '<option value="' . $rowDriver['full_name'] . '">' . $rowDriver['full_name'] . '</option>';
+                                }
+                                ?>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label for="editTripDate" class="form-label">Date</label>
+                                                    <input
+                                                        type="date"
+                                                        id="editTripDate"
+                                                        name="editTripDate"
+                                                        class="form-control"
+                                                        value="<?php echo date('Y-m-d'); ?>"
+                                                        required="required">
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button
+                                                type="button"
+                                                class="btn rounded-pill btn-outline-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn rounded-pill btn-primary">Save changes</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end of edit trip modal -->
