@@ -255,7 +255,7 @@
 
 
 <!--fuel 4 card codes end here  -->
-
+<?php  include_once 'includes/trip4div.php'      ?>
             <!-- / Content -->
 
             <!-- Footer -->

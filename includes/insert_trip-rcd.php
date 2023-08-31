@@ -1,11 +1,10 @@
 <?php
-
-
 require_once 'db.php'; // Include your database connection
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Extract data from the form
     $tripId = $_POST['tripNameSelect']; // Get the selected trip ID from the form
+    $qnt = $_POST['QNT']; // Get the QNT value from the form
     $vehicleNumber = $_POST['vehicle_number'];
     $amount = $_POST['amount'];
     $driverAllowance = $_POST['driverAllowance'];
@@ -20,8 +19,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $tripNameRow = mysqli_fetch_assoc($tripNameResult);
     $tripName = $tripNameRow['trip_name'];
 
+
+
     // Insert data into the trip_record table
-    $insertQuery = "INSERT INTO trip_record (trip_name, vehicle_number, amount, driver_allowance, helper_allowance, driver_name, helper_name, trip_date) VALUES ('$tripName', '$vehicleNumber', $amount, $driverAllowance, $helperAllowance, '$driverName', '$helperName', '$tripDate')";
+    $insertQuery = "INSERT INTO trip_record (trip_name, qnt, amount, driver_allowance, helper_allowance, driver_name, helper_name, trip_date, vehicle_number) VALUES ('$tripName', $qnt, $amount, $driverAllowance, $helperAllowance, '$driverName', '$helperName', '$tripDate', '$vehicleNumber')";
 
     if (mysqli_query($conn, $insertQuery)) {
         // Data inserted successfully
@@ -31,5 +32,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "Error: " . mysqli_error($conn);
     }
 }
-
 ?>
