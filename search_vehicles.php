@@ -20,7 +20,7 @@ $stmt->execute();
 // Get the result
 $result = $stmt->get_result();
 
-// Fetch data as an associative array
+// Fetch data as an associative array..
 $data = [];
 while ($row = $result->fetch_assoc()) {
     $data[] = $row;

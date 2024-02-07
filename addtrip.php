@@ -1,5 +1,5 @@
 <?php
-// Start the session (assuming the user is already logged in and you've stored the user's name in the session)
+// Start the session (assuming the user is already logged in and you've stored the user's name in the session)...
 require_once 'session.php';
 
 // Include database connection

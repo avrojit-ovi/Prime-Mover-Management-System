@@ -2,7 +2,7 @@
 // Start the session (assuming the user is already logged in and you've stored the user's name in the session)
 require_once 'session.php';
 
-// Include database connection and functions for edit and delete
+// Include database connection and functions for edit and delete...
 require_once 'includes/db.php';
 require_once 'includes/editVehicles.php';
 require_once 'includes/deleteVehicle.php';

@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
             
             if (move_uploaded_file($_FILES['profile_picture']['tmp_name'], $profilePicturePath)) {
-                // Connect to the MySQL database
+                // Connect to the MySQL database..
                 require_once 'includes/db.php';
                 // Hash the password before storing it in the database
                 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);

@@ -13,7 +13,7 @@ if (isset($_SESSION['user_id'])) {
 // Include the database connection file
 require_once 'includes/db.php';
 
-// Fetch the full name of the user using the user_id from the session
+// Fetch the full name of the user using the user_id from the session..
 $sql = "SELECT name, profile_picture FROM users WHERE id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param('s', $user_id);

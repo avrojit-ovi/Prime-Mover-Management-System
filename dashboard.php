@@ -18,7 +18,7 @@
   </head>
 
   <body>
-    <!-- Layout wrapper -->
+    <!-- Layout wrapper --->
     <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
        <?php include_once 'includes/menu.php' ?>

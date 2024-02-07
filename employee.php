@@ -10,7 +10,7 @@ if (!$conn) {
     die("Database connection failed: " . mysqli_connect_error());
 }
 
-// Fetch all employees from the database
+// Fetch all employees from the database...
 
 ?>
 

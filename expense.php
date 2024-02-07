@@ -5,7 +5,7 @@ require_once 'session.php';
 // Include database connection
 require_once 'includes/db.php';
 
-// Check the database connection
+// Check the database connection...
 if (!$conn) {
     die("Database connection failed: " . mysqli_connect_error());
 }

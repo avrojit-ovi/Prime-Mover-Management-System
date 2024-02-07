@@ -2,7 +2,7 @@
 // Include the database connection file
 require_once 'includes/db.php';
 
-// Initialize variables to store user input
+// Initialize variables to store user input...
 $email = $password = '';
 $login_error = '';
 
